@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17152b">
+  <meta name="description" content="Help Purnata rescue Choggy in a colorful cat-themed Bubble Shooter adventure.">
+  <title>Choggy's Adventures</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <audio id="backgroundMusic" src="assets/background-music.mp3" loop preload="auto"></audio>
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">🐾</div>
+      <div class="brand-copy"><p class="eyebrow">A CAT-RESCUE ARCADE ADVENTURE</p><h1>Choggy's <span>Adventures</span></h1></div>
+      <button id="soundBtn" class="icon-button" aria-label="Toggle sound" title="Toggle sound">🔊</button>
+    </header>
+
+    <section class="game-layout" aria-label="Bubble shooter game">
+      <aside class="side-panel story-panel">
+        <div class="character-card choggy-card"><div class="character-art image-art" id="choggyArt"><img src="assets/choggy.png" alt="Choggy, a white and gray pixel-art cat"></div><div><p class="eyebrow">YOUR PARTNER</p><h2>Choggy</h2><p class="small-copy">A little scared. Very brave.</p></div></div>
+        <div class="mission-card"><p class="eyebrow">MISSION</p><h2 id="missionTitle">Rescue Choggy!</h2><p id="missionText">Clear the cat gang by matching 3 or more cat bubbles.</p></div>
+        <div class="tip-card"><span class="tip-icon">💡</span><div><strong>Quick tip</strong><p>Bank shots off the side walls to reach tricky clusters.</p></div></div>
+      </aside>
+
+      <section class="play-area">
+        <div class="hud">
+          <div class="hud-stat"><span>LEVEL</span><strong id="levelValue">01</strong></div>
+          <div class="hud-stat"><span>SCORE</span><strong id="scoreValue">0000</strong></div>
+          <div class="hud-stat"><span>BEST</span><strong id="bestValue">0000</strong></div>
+          <div class="hud-stat lives-stat"><span>SHOTS</span><strong id="livesValue">♥ ♥ ♥ ♥ ♥</strong></div>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="gameCanvas" aria-label="Bubble shooter playfield. Move your pointer or finger to aim and tap or click to shoot."></canvas>
+          <img class="field-companion-art" src="assets/purnata-choggy-transparent.png" alt="Purnata petting Choggy" />
+          <div class="canvas-label">AIM · MATCH · RESCUE</div>
+          <div id="toast" class="toast" aria-live="polite"></div>
+          <div id="overlay" class="overlay">
+            <div class="dialog-card">
+              <div class="dialog-scene"><span class="scene-sparkle sparkle-one">✦</span><img class="dialog-character dialog-choggy" src="assets/choggy.png" alt="Choggy"><img class="dialog-character dialog-purnata" src="assets/purnata.png" alt="Purnata"><span class="scene-sparkle sparkle-two">✦</span></div>
+              <p class="eyebrow" id="dialogEyebrow">A CHOGGY'S ADVENTURES STORY</p>
+              <h2 id="dialogTitle">Oh no, Choggy!</h2>
+              <p id="dialogText">Choggy had a run-in with a gang of cats. Scared and shaken, he runs straight to Purnata for help!</p>
+              <div class="dialog-actions"><button id="dialogNext" class="primary-button">What happens next? <span>→</span></button></div>
+              <p class="dialog-progress" id="dialogProgress">STORY · 1 OF 3</p>
+            </div>
+          </div>
+          <div id="endOverlay" class="overlay hidden"><div class="dialog-card end-card"><div class="end-emoji" id="endEmoji">🎉</div><p class="eyebrow" id="endEyebrow">LEVEL COMPLETE</p><h2 id="endTitle">You did it!</h2><p id="endText">Choggy is safe for now.</p><button id="endButton" class="primary-button">Next level <span>→</span></button></div></div>
+        </div>
+        <div class="controls-row">
+          <div class="current-shot"><span class="shot-label">READY TO SHOOT</span><span class="shot-bubble" id="currentBubble">🐱</span><span class="shot-next-label">NEXT</span><span class="shot-bubble next-bubble" id="nextBubble">🐱</span></div>
+          <div class="control-buttons"><button id="swapBtn" class="secondary-button" title="Swap current and next bubbles">⇄ Swap</button><button id="pauseBtn" class="secondary-button">Ⅱ Pause</button><button id="restartBtn" class="secondary-button" title="Restart this level">↻ Restart</button></div>
+        </div>
+        <p class="control-hint" id="controlHint">Move to aim · Click or tap to shoot · Press Space to swap</p>
+      </section>
+
+      <aside class="side-panel purnata-panel">
+        <div class="character-card purnata-card"><div class="character-art image-art"><img src="assets/purnata.png" alt="Purnata, pixel-art character"></div><div><p class="eyebrow">THE RESCUER</p><h2>Purnata</h2><p class="small-copy">Ready, aim, rescue!</p></div></div>
+        <div class="progress-card"><div class="progress-heading"><span>LEVEL PROGRESS</span><strong id="progressPercent">0%</strong></div><div class="progress-track"><div id="progressFill" class="progress-fill"></div></div><p id="progressText">Pop cat bubbles to clear the board.</p></div>
+        <div class="power-card"><div class="power-orb">💥</div><div><p class="eyebrow">POWER SHOT</p><h3 id="powerTitle">Paw Pop</h3><p id="powerText">Every 5th shot becomes a burst bubble.</p></div></div>
+      </aside>
+    </section>
+    <footer><span>Made with ♥ for Choggy</span><span>Desktop + mobile friendly</span></footer>
+  </main>
+  <audio id="customBgm" src="assets/background-music.mp3" preload="none" loop></audio>
+  <script src="game.js"></script>
+</body>
+</html>
